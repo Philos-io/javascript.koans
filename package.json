@@ -1,0 +1,37 @@
+{
+  "name": "javascript.koans",
+  "version": "1.0.0",
+  "description": "In this set of examples and tests we cover advanced JavaScript concepts such as closure, inheritance, variable hoisting, 'this' with context switch...",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel": "^5.8.23",
+    "babel-runtime": "^5.8.25",
+    "chai": "^3.3.0",
+    "isparta": "^3.1.0",
+    "istanbul": "^0.3.22",
+    "mocha": "^2.3.3",
+    "sinon": "^1.17.2",
+    "wallaby-webpack": "0.0.9"
+  },
+  "scripts": {
+    "test": "mocha -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Philos-io/javascript.koans.git"
+  },
+  "keywords": [
+    "javascript",
+    "testing"
+  ],
+  "author": "davy@philos.io",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Philos-io/javascript.koans/issues"
+  },
+  "homepage": "https://github.com/Philos-io/javascript.koans#readme"
+}
