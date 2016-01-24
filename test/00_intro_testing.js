@@ -1,6 +1,7 @@
 /**
 * Introduction to testing framework (Mocha)
 **/
+var expect = require('chai').expect;
 
 describe('Introductio to Mocha and WallabyJS', function() {
 
@@ -21,7 +22,7 @@ describe('Introductio to Mocha and WallabyJS', function() {
 
   // Expected value versus actual value
   xit('should expect equality', function() {
-    var expectedValue = FILL_ME_IN;
+    var expectedValue = ___;
     var actualValue = 1 + 1;
 
     expect(actualValue === expectedValue).toBeTruthy();
@@ -29,7 +30,7 @@ describe('Introductio to Mocha and WallabyJS', function() {
 
   // Some ways of asserting equality are better than others.
   xit('should assert equality a better way', function() {
-    var expectedValue = FILL_ME_IN;
+    var expectedValue = ___;
     var actualValue = 1 + 1;
 
   // toEqual() compares using common sense equality.
