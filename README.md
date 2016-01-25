@@ -8,6 +8,6 @@ Then you can run the test with `npm test`
 
 We use Mocha in this repository.
 
-This repository is also configured to run WallabyJS.
+This repository is also configured to run with WallabyJS.
 
 Feel free to send us PRs
