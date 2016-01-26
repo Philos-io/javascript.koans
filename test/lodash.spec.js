@@ -5,103 +5,223 @@ chai.should();
 
 describe('Underscore library', function(){
 
-    describe('identity', function(){
-      it('Should return the same value that has been passed', function(){
-        expect(_.identity(1)).equal(1);
-        expect(_.identity({})).to.deep.equal({});
-        expect(_.identity('philos')).to.deep.equal('philos');
-      })
+  describe('identity', function(){
+    it('Should return the same value that has been passed', function(){
+      expect(_.identity(1)).equal(1);
+      expect(_.identity({})).to.deep.equal({});
+      expect(_.identity('philos')).to.deep.equal('philos');
+    })
+  });
+
+  describe('slice', function(){
+    it('Should return a new array', function(){
+      // TODO
+    });
+  });
+
+  describe('splice', function(){
+    it('Should return a new array', function(){
+      // TODO
+    });
+  });
+
+  describe('first: does not mutate the collection', function(){
+
+    var items = [1,9, 10, undefined];
+
+    it('Should throw an error if no argument is passed', function(){
+        _.first().should.throw(Error);
     });
 
-    describe('first: does not mutate the collection', function(){
-
-      var items = [1,9, 10, undefined];
-
-      it('Should throw an error if no argument is passed', function(){
-          _.first().should.throw(Error);
-      });
-
-      it('Should return the first element of the collection', function(){
-        expect(_.first(items)).equal(1);
-      });
-
-      it('Should return the first n elements when a second argument is passed', function(){
-        expect(_.first(items, 0)).equal(1);
-        expect(_.first(items, 1)).to.deep.equal([1]);
-        expect(_.first(items, 2)).to.deep.equal([1, 9]);
-      })
+    it('Should return the first element of the collection', function(){
+      expect(_.first(items)).equal(1);
     });
 
-    describe('last',  function(){
-      let items = [1,9, 10, 'Philos'];
+    it('Should return the first n elements when a second argument is passed', function(){
+      expect(_.first(items, 0)).equal(1);
+      expect(_.first(items, 1)).to.deep.equal([1]);
+      expect(_.first(items, 2)).to.deep.equal([1, 9]);
+    })
+  });
 
-      it('Should throw an error if no collection is passed', function(){
-          _.last().should.throw(Error);
-      });
+  describe('last',  function(){
+    let items = [1,9, 10, 'Philos'];
 
-      it('Should return the last element of the collection', function(){
-          expect(_.last(items)).to.deep.equal('Philos');
-      });
-
-      it('Should return the last n elements when a second argument is passed', function(){
-        expect(_.last(items, 0)).equal('Philos');
-        expect(_.last(items, 1)).to.deep.equal(['Philos']);
-        expect(_.last(items, 2)).to.deep.equal([10, 'Philos']);
-      })
+    it('Should throw an error if no collection is passed', function(){
+        _.last().should.throw(Error);
     });
 
-    describe('forEach', function(){
-      let items = [1,9, 10, 'Philos'];
-
-      it('Should return an array', function(){
-        expect(_.forEach(items, _.identity)).is.an('array');
-      });
-
-      it('Should call the callback on every single item by passing the current item, the index and the initial collection', function(){
-        let spy = sinon.spy(_, 'identity');
-        _.forEach(items, spy);
-        expect(spy.callCount).equal(4);
-        expect(spy.calledWith(1, 0, items)).equal(true);
-        expect(spy.calledWith(9, 1, items)).equal(true);
-        expect(spy.calledWith(10, 2, items)).equal(true);
-        expect(spy.calledWith('Philos', 3, items)).equal(true);
-      });
+    it('Should return the last element of the collection', function(){
+        expect(_.last(items)).to.deep.equal('Philos');
     });
 
-    describe('map', function(){
-      it('should apply a function to every value in an array', function(){
-        let squaredValues = _.map([4, 2, 3, 9], (item) => item*item);
-        expect(squaredValues).to.deep.equal([16, 4, 9, 81]);
+    it('Should return the last n elements when a second argument is passed', function(){
+      expect(_.last(items, 0)).equal('Philos');
+      expect(_.last(items, 1)).to.deep.equal(['Philos']);
+      expect(_.last(items, 2)).to.deep.equal([10, 'Philos']);
+    })
+  });
+
+  describe('forEach', function(){
+    it('should iterate over arrays, providing access to the element, index, and array itself', function() {
+      var animals = ['ant', 'bat', 'cat'];
+      var iterationInputs = [];
+
+      _.forEach(animals, function(animal, index, list) {
+        iterationInputs.push([animal, index, list]);
       });
+
+      expect(iterationInputs).to.eql([
+        ['ant', 0, animals],
+        ['bat', 1, animals],
+        ['cat', 2, animals]
+      ]);
     });
 
-    describe('find: find does not mutate the array on which it is called.', function(){
+    it('should only iterate over the array elements, not properties of the array', function() {
+      var animals = ['ant', 'bat', 'cat'];
+      var iterationInputs = [];
 
-      xit('Should throw an error if no predicate is passed', function(){
+      animals.shouldBeIgnored = 'Ignore me!';
 
-          _.find().should.throw(Error);
+      _.forEach(animals, function(animal, index, list) {
+        iterationInputs.push([animal, index, list]);
       });
 
-      it('should return undefined if none of the elements match the predicate', function(){
-        let isEven = (num) => { num % 2 === 0; };
-        let evens = _.find([1, 3, 7, 5], isEven);
-        expect(evens).equal('undefined');
-      });
-
-      it('should return the first element that matchs the predicate', function(){
-        let isOdd = (num) => { num % 2 !== 0; };
-        let odds = _.find([10, 2, 3, 4, 5, 6], isOdd);
-        expect(odds).equal(3);
-      });
+      expect(iterationInputs).to.eql([
+        ['ant', 0, animals],
+        ['bat', 1, animals],
+        ['cat', 2, animals]
+      ]);
     });
 
-    describe('findIndex', function(){});
+    it('should iterate over objects, providing access to the element, index, and object itself', function() {
+      var animals = { a: 'ant', b: 'bat', c: 'cat' };
+      var iterationInputs = [];
 
-    describe('fill', function(){});
+      _.forEach(animals, function(animal, key, object) {
+        iterationInputs.push([animal, key, object]);
+      });
 
-    describe('keys', function(){});
+      expect(iterationInputs).to.eql([
+        ['ant', 'a', animals],
+        ['bat', 'b', animals],
+        ['cat', 'c', animals]
+      ]);
+    });
+  });
 
-    describe('values', function(){});
+  describe('map', function(){
+    it('should apply a function to every value in an array', function(){
+      let squaredValues = _.map([4, 2, 3, 9], (item) => item*item);
+      expect(squaredValues).to.deep.equal([16, 4, 9, 81]);
+    });
+  });
 
-    describe('entries', function(){});
+  describe('find: find does not mutate the array on which it is called.', function(){
+
+    xit('Should throw an error if no predicate is passed', function(){
+
+        _.find().should.throw(Error);
+    });
+
+    it('should return undefined if none of the elements match the predicate', function(){
+      let isEven = (num) => { num % 2 === 0; };
+      let evens = _.find([1, 3, 7, 5], isEven);
+      expect(evens).equal('undefined');
+    });
+
+    it('should return the first element that matchs the predicate', function(){
+      let isOdd = function(num){ num % 2 !== 0; };
+      let odds = _.find([10, 2, 3, 4, 5, 6], isOdd);
+      expect(odds).equal(3);
+    });
+  });
+
+  describe('reduce', function() {
+    it('should be able to sum up an array', function() {
+      var add = function(tally, item) {return tally + item; };
+      var total = _.reduce([1, 2, 3], add, 0);
+
+      expect(total).to.equal(6);
+    });
+
+  });
+
+  describe('contains', function() {
+    it('should return false if a collection does not contain a user-specified value', function() {
+      expect(_.contains([4,5,6], 2)).to.equal(false);
+    });
+
+    it('should return true if a collection contains a user-specified value', function() {
+      expect(_.contains([  4,   5,   6], 5)).to.equal(true);
+    });
+
+    it('can operate on objects', function(){
+      expect(_.contains({a:4, b:5, c:6}, 5)).to.equal(true);
+    });
+  });
+
+  describe('extend', function() {
+    it('returns the first argument', function() {
+      var to = {};
+      var from = {};
+      var extended = _.extend(to, from);
+
+      expect(extended).to.equal(to);
+    });
+
+    it('should extend an object with the attributes of another', function() {
+      var to = {};
+      var from = {a:'b'};
+      var extended = _.extend(to, from);
+
+      expect(extended.a).to.equal('b');
+    });
+
+    it('should override properties found on the destination', function() {
+      var to = {a:'x'};
+      var from = {a:'b'};
+      var extended = _.extend(to, from);
+
+      expect(extended.a).to.equal('b');
+    });
+
+    it('should not override properties not found in the source', function() {
+      var to = {x:'x'};
+      var from = {a:'b'};
+      var extended = _.extend(to, from);
+
+      expect(extended.x).to.equal('x');
+    });
+
+    it('should extend from multiple source objects', function() {
+      var extended = _.extend({x:1}, {a:2}, {b:3});
+
+      expect(extended).to.eql({x:1, a:2, b:3});
+    });
+
+    it('in the case of a conflict, it should use the last property\'s values when extending from multiple source objects', function() {
+      var extended = _.extend({x:'x'}, {a:'a', x:2}, {a:1});
+
+      expect(extended).to.eql({x:2, a:1});
+    });
+
+    it('should copy undefined values', function() {
+      var extended = _.extend({}, {a: void 0, b: null});
+
+      expect('a' in extended && 'b' in extended).to.be(true);
+    });
+  });
+
+
+  describe('findIndex', function(){});
+
+  describe('fill', function(){});
+
+  describe('keys', function(){});
+
+  describe('values', function(){});
+
+  describe('entries', function(){});
 });

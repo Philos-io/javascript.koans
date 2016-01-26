@@ -66,6 +66,35 @@ function find(collection, predicate){
 ** @author {your name}
 ** @function
 ** @param {array}
+** @return {object} or {undefined}
+**/
+function reduce(collection, callback, acc){
+}
+
+/**
+** @author {your name}
+** @function
+** @param {array}
+** @return {object} or {undefined}
+**/
+function contains(collection, predicate){
+}
+
+/**
+** @author {your name}
+** @function
+** @param {array}
+** @return {object} or {undefined}
+**/
+function extend(){
+}
+
+
+
+/**
+** @author {your name}
+** @function
+** @param {array}
 ** @return {array}
 **/
 function findIndex(collection, predicate){
