@@ -3,6 +3,7 @@ var babel = require('babel');
 module.exports = function (wallaby) {
   return {
     files: [
+      'examples/*.js',
       'src/*.js'
     ],
 
