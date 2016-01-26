@@ -15,13 +15,15 @@
     "istanbul": "^0.3.22",
     "live-server": "^0.9.1",
     "mocha": "^2.3.3",
+    "node-inspector": "^0.12.5",
     "sinon": "^1.17.2",
     "wallaby-webpack": "0.0.9"
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha --compilers js:babel/register -w",
     "docs": "esdoc -c esdoc.json && open ./esdoc/index.html",
-    "start": "live-server"
+    "start": "live-server",
+    "debug": "node-debug src/index.js"
   },
   "repository": {
     "type": "git",
