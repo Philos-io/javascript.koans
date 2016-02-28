@@ -44,6 +44,15 @@ function isArray(collection){
 ** @param {array}
 ** @return
 **/
+function isDefined(args){
+}
+
+/**
+** @author {your name}
+** @function
+** @param {array}
+** @return
+**/
 function forEach(collection, callback){
 
 }

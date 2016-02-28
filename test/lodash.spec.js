@@ -74,6 +74,18 @@ describe('Underscore library', function(){
     });
   });
 
+  describe('isDefined',  function(){
+    let items = [1,9, 10, 'Philos'];
+
+    it('Should return true when passed an collection of elements', function(){
+      _.isDefined(items).equal(true);
+    });
+
+    it('Should return false when passed a string', function(){
+      expect(_.isArray("Bootcamp by Philos")).to.equal(false);
+    });
+  });
+
 
   describe('forEach', function(){
     it('should iterate over arrays, providing access to the element, index, and array itself', function() {
