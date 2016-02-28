@@ -99,6 +99,32 @@ describe('Underscore library', function(){
     });
   });
 
+  describe('isNumber',  function(){
+    let items = [1,9, 10, 'Philos'];
+
+    it('Should return true when passed an anonymous function', function(){
+      _.isNumber(function(){}).equal(true);
+    });
+
+    it('Should return true when passed a named function', function(){
+      let sum = (x, y)=> x + y;
+      expect(_.isNumber(sum)).equal(true);
+    });
+  });
+
+
+  describe('isDate',  function(){
+    let items = [1,9, 10, 'Philos'];
+
+    it('Should return true when passed an anonymous function', function(){
+      _.isDate(function(){}).equal(true);
+    });
+
+    it('Should return true when passed a named function', function(){
+      let sum = (x, y)=> x + y;
+      expect(_.isDate(sum)).equal(true);
+    });
+  });
 
   describe('forEach', function(){
     it('should iterate over arrays, providing access to the element, index, and array itself', function() {
