@@ -137,16 +137,6 @@ function values(collection){
 ** @param
 ** @return
 **/
-function find(collection){
-
-}
-
-/**
-** @author {your name}
-** @function
-** @param
-** @return
-**/
 function entries(collection){
 
 }
