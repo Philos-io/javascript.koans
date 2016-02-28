@@ -51,7 +51,7 @@ function isDefined(args){
 ** @author {your name}
 ** @function
 ** @param {array}
-** @return
+** @return {boolean}
 **/
 function isFunction(args){
 }
@@ -60,10 +60,28 @@ function isFunction(args){
 ** @author {your name}
 ** @function
 ** @param {array}
+** @return {boolean}
+**/
+function isNumber(args){
+}
+
+/**
+** @author {your name}
+** @function
+** @param {array}
+** @return {boolean}
+**/
+function isDate(args){
+}
+
+
+/**
+** @author {your name}
+** @function
+** @param {array}
 ** @return
 **/
 function forEach(collection, callback){
-
 }
 
 /**
