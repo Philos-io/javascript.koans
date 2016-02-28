@@ -15,13 +15,13 @@ describe('Underscore library', function(){
 
   describe('slice', function(){
     it('Should return a new array', function(){
-      // TODO
+      // TODO: write and implement the specs for this function
     });
   });
 
   describe('splice', function(){
     it('Should return a new array', function(){
-      // TODO
+      // TODO: write and implement the specs for this function
     });
   });
 
@@ -59,8 +59,21 @@ describe('Underscore library', function(){
       expect(_.last(items, 0)).equal('Philos');
       expect(_.last(items, 1)).to.deep.equal(['Philos']);
       expect(_.last(items, 2)).to.deep.equal([10, 'Philos']);
-    })
+    });
   });
+
+  describe('isArray',  function(){
+    let items = [1,9, 10, 'Philos'];
+
+    it('Should return true when passed an collection of elements', function(){
+      _.isArray(items).equal(true);
+    });
+
+    it('Should return false when passed a string', function(){
+      expect(_.isArray("Bootcamp by Philos")).to.equal(false);
+    });
+  });
+
 
   describe('forEach', function(){
     it('should iterate over arrays, providing access to the element, index, and array itself', function() {

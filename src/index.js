@@ -8,7 +8,6 @@
 ** @return
 **/
 function identity(value){
-
 }
 
 
@@ -19,7 +18,6 @@ function identity(value){
 ** @return
 **/
 function first(collection, n){
-
 }
 
 /**
@@ -29,7 +27,15 @@ function first(collection, n){
 ** @return
 **/
 function last(collection, n){
+}
 
+/**
+** @author {your name}
+** @function
+** @param {array}
+** @return
+**/
+function isArray(collection){
 }
 
 /**
