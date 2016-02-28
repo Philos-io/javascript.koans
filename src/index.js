@@ -53,6 +53,15 @@ function isDefined(args){
 ** @param {array}
 ** @return
 **/
+function isFunction(args){
+}
+
+/**
+** @author {your name}
+** @function
+** @param {array}
+** @return
+**/
 function forEach(collection, callback){
 
 }

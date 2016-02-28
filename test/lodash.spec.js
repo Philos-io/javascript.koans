@@ -82,7 +82,20 @@ describe('Underscore library', function(){
     });
 
     it('Should return false when passed a string', function(){
-      expect(_.isArray("Bootcamp by Philos")).to.equal(false);
+      expect(_.isDefined("Bootcamp by Philos")).to.equal(false);
+    });
+  });
+
+  describe('isFunction',  function(){
+    let items = [1,9, 10, 'Philos'];
+
+    it('Should return true when passed an anonymous function', function(){
+      _.isFunction(function(){}).equal(true);
+    });
+
+    it('Should return true when passed a named function', function(){
+      let sum = (x, y)=> x + y;
+      expect(_.isFunction(sum)).equal(true);
     });
   });
 
