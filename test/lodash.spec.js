@@ -5,7 +5,7 @@ chai.should();
 
 describe('Underscore library', function(){
 
-  describe('identity', function(){
+  xdescribe('identity', function(){
     it('Should return the same value that has been passed', function(){
       expect(_.identity(1)).equal(1);
       expect(_.identity({})).to.deep.equal({});
@@ -13,19 +13,7 @@ describe('Underscore library', function(){
     })
   });
 
-  describe('slice', function(){
-    it('Should return a new array', function(){
-      // TODO: write and implement the specs for this function
-    });
-  });
-
-  describe('splice', function(){
-    it('Should return a new array', function(){
-      // TODO: write and implement the specs for this function
-    });
-  });
-
-  describe('first: does not mutate the collection', function(){
+  xdescribe('first: does not mutate the collection', function(){
 
     let items = [1,9, 10, true, 'Hacklunch', {name: 'Philos'}];
 
@@ -64,56 +52,88 @@ describe('Underscore library', function(){
     });
   });
 
-  describe('isArray',  function(){
-    let items = [1,9, 10, 'Philos'];
+  xdescribe('isArray',  function(){
+    let items = [10, false, 'Hacklunch'];
 
     it('Should return true when passed an collection of elements', function(){
-      _.isArray(items).equal(true);
+      expect(_.isArray(items)).equal(true);
+      expect(_.isArray([])).equal(true);
     });
 
-    it('Should return false when passed a string', function(){
+    it('Should return false when passed anything else', function(){
       expect(_.isArray("Bootcamp by Philos")).to.equal(false);
+      expect(_.isArray({})).to.equal(false);
+      expect(_.isArray(12)).to.equal(false);
+      expect(_.isArray(false)).to.equal(false);
+    });
+
+    it('arguments is not an Array', function(){
+      _.isArray(items)
+
+      function isArray(){
+        expect(_.isArray(arguments)).to.equal(false);
+      }
     });
   });
 
-  describe('isDefined',  function(){
-    let items = [1,9, 10, 'Philos'];
-
-    it('Should return true when passed an collection of elements', function(){
-      _.isDefined(items).equal(true);
+  xdescribe('isDefined',  function(){
+    it('Happy path', function(){
+      expect(_.isDefined([])).equal(true);
+      expect(_.isDefined(12)).equal(true);
+      expect(_.isDefined(0)).equal(true);
+      expect(_.isDefined(false)).equal(true);
+      expect(_.isDefined({})).equal(true);
+      expect(_.isDefined([])).equal(true);
     });
 
     it('Should return false when passed a string', function(){
-      expect(_.isDefined("Bootcamp by Philos")).to.equal(false);
+      let items;
+      expect(_.isDefined(items)).equal(false);
     });
   });
 
   describe('isFunction',  function(){
-    let items = [1,9, 10, 'Philos'];
-
     it('Should return true when passed an anonymous function', function(){
       _.isFunction(function(){}).equal(true);
+      _.isFunction(()=>{}).equal(true);
     });
 
     it('Should return true when passed a named function', function(){
       let sum = (x, y)=> x + y;
       expect(_.isFunction(sum)).equal(true);
     });
+
+    it('Should return true when passed a class', function(){
+      class Book{}
+      expect(_.isFunction(Book)).equal(true);
+    });
+
+    it('Should return false otherwise', ()=>{
+      expect(_.isFunction({})).equal(false);
+      expect(_.isFunction(12)).equal(false);
+      expect(_.isFunction(undefined)).equal(false);
+      expect(_.isFunction('Hacklunch')).equal(false);
+      expect(_.isFunction([])).equal(false);
+    });
   });
 
   describe('isNumber',  function(){
-    let items = [1,9, 10, 'Philos'];
-
-    it('Should return true when passed an anonymous function', function(){
-      _.isNumber(function(){}).equal(true);
+    it('Should return true when passed any number', function(){
+      expect(_.isNumber(12)).equal(true);
+      expect(_.isNumber(1.2)).equal(true);
+      expect(_.isNumber(12)).equal(true);
+      expect(_.isNumber(0)).equal(true);
+      expect(_.isNumber(-10)).equal(true);
     });
 
-    it('Should return true when passed a named function', function(){
-      let sum = (x, y)=> x + y;
-      expect(_.isNumber(sum)).equal(true);
+    it('Should return false otherwise', function(){
+      console.log(NaN === NaN)
+      expect(_.isNumber({})).equal(false);
+      expect(_.isNumber(NaN)).equal(false);
+      expect(_.isNumber({})).equal(false);
+      expect(_.isNumber({})).equal(false);
     });
   });
-
 
   describe('isDate',  function(){
     let items = [1,9, 10, 'Philos'];
@@ -125,6 +145,18 @@ describe('Underscore library', function(){
     it('Should return true when passed a named function', function(){
       let sum = (x, y)=> x + y;
       expect(_.isDate(sum)).equal(true);
+    });
+  });
+
+  describe('slice', function(){
+    it('Should return a new array', function(){
+      // TODO: write and implement the specs for this function
+    });
+  });
+
+  describe('splice', function(){
+    it('Should return a new array', function(){
+      // TODO: write and implement the specs for this function
     });
   });
 
