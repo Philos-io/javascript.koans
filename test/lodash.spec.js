@@ -127,24 +127,10 @@ describe('Underscore library', function(){
     });
 
     it('Should return false otherwise', function(){
-      console.log(NaN === NaN)
       expect(_.isNumber({})).equal(false);
       expect(_.isNumber(NaN)).equal(false);
       expect(_.isNumber({})).equal(false);
       expect(_.isNumber({})).equal(false);
-    });
-  });
-
-  describe('isDate',  function(){
-    let items = [1,9, 10, 'Philos'];
-
-    it('Should return true when passed an anonymous function', function(){
-      _.isDate(function(){}).equal(true);
-    });
-
-    it('Should return true when passed a named function', function(){
-      let sum = (x, y)=> x + y;
-      expect(_.isDate(sum)).equal(true);
     });
   });
 
