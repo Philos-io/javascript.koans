@@ -27,7 +27,7 @@ describe('Underscore library', function(){
 
   describe('first: does not mutate the collection', function(){
 
-    var items = [1,9, 10, undefined];
+    let items = [1,9, 10, true, 'Hacklunch', {name: 'Philos'}];
 
     it('Should throw an error if no argument is passed', function(){
         _.first().should.throw(Error);
@@ -41,6 +41,7 @@ describe('Underscore library', function(){
       expect(_.first(items, 0)).equal(1);
       expect(_.first(items, 1)).to.deep.equal([1]);
       expect(_.first(items, 2)).to.deep.equal([1, 9]);
+      expect(_.first(items, 5)).to.deep.equal([1, 9, 10, true, 'Hacklunch']);
     })
   });
 
