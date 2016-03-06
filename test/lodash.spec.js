@@ -44,21 +44,22 @@ describe('Underscore library', function(){
     })
   });
 
-  describe('last',  function(){
-    let items = [1,9, 10, 'Philos'];
+  xdescribe('last',  function(){
+    let items = [1,9, 10, true, 'Hacklunch', {name: 'Philos'}];
 
     it('Should throw an error if no collection is passed', function(){
         _.last().should.throw(Error);
     });
 
     it('Should return the last element of the collection', function(){
-        expect(_.last(items)).to.deep.equal('Philos');
+        expect(_.last(items)).to.deep.equal({name: 'Philos'});
     });
 
     it('Should return the last n elements when a second argument is passed', function(){
-      expect(_.last(items, 0)).equal('Philos');
-      expect(_.last(items, 1)).to.deep.equal(['Philos']);
-      expect(_.last(items, 2)).to.deep.equal([10, 'Philos']);
+      expect(_.last(items, 0)).to.deep.equal({name: 'Philos'});
+      expect(_.last(items, 1)).to.deep.equal([{name: 'Philos'}]);
+      expect(_.last(items, 2)).to.deep.equal(['Hacklunch', {name: 'Philos'}]);
+      expect(_.last(items, 3)).to.deep.equal([true,'Hacklunch', {name: 'Philos'}]);
     });
   });
 
