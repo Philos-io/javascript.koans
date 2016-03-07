@@ -65,7 +65,9 @@ describe('Underscore library', ()=>{
     });
 
     it('Should throw an error if no collection is passed', ()=>{
-        _.last().should.throw(Error);
+        (function(){
+          _.last();
+        }).should.throw(Error);
     });
 
     it('Should return the last element of the collection', ()=>{
