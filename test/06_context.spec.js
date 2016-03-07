@@ -3,7 +3,7 @@
 **/
 var expect = require('chai').expect;
 
-describe('Context in JavaScript', function(){
+xdescribe('Context in JavaScript', function(){
 
   var company = {
     name: 'Philos Lab',

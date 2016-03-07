@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 
-describe("About Arrays", function() {
+xdescribe("About Arrays", function() {
 
   //We shall contemplate truth by testing reality, via spec expectations.
   it("should create arrays", function() {

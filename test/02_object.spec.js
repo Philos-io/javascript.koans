@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 
-describe("About Objects", function () {
+xdescribe("About Objects", function () {
 
   describe("Properties", function () {
     var megalomaniac;
