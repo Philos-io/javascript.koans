@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 
-describe('JavaScript Inheritance Patterns', function(){
+xdescribe('JavaScript Inheritance Patterns', function(){
 
   describe('Pseudoclassical pattern', function(){
 

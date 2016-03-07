@@ -1,6 +1,6 @@
 var expect = require('chai').expect;
 
-describe("About Mutability", function() {
+xdescribe("About Mutability", function() {
 
   it("should expect object properties to be public and mutable", function () {
     var aPerson = {firstname: "John", lastname: "Smith" };
