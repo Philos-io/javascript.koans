@@ -3,9 +3,28 @@ var sinon = require('sinon');
 var expect = chai.expect;
 chai.should();
 
+var _ = require('../src/');
+
+console.log(_)
+
+xdescribe('Test 1', function(){
+  it('should add 2 numbers', function(){
+    expect(2+2).equal(2);
+  })
+  it('should add 2 numbers', function(){
+    expect(2+2).equal(2);
+  })
+  it('should add 2 numbers', function(){
+    expect(2+2).equal(2);
+  })
+});
+
+
+
 describe('Underscore library', ()=>{
 
-  xdescribe('identity', ()=>{
+  describe('identity', ()=>{
+
     it('Should return the same value that has been passed', ()=>{
       expect(_.identity(1)).equal(1);
       expect(_.identity({})).to.deep.equal({});
@@ -13,7 +32,7 @@ describe('Underscore library', ()=>{
     })
   });
 
-  xdescribe('first: does not mutate the collection', ()=>{
+  describe('first: does not mutate the collection', ()=>{
 
     let items;
     beforeEach(function(){
@@ -21,7 +40,9 @@ describe('Underscore library', ()=>{
     });
 
     it('Should throw an error if no argument is passed', ()=>{
-        _.first().should.throw(Error);
+          (function(){
+            _.first()
+          }).should.throw(Error);
     });
 
     it('Should return the first element of the collection', ()=>{
@@ -141,13 +162,13 @@ describe('Underscore library', ()=>{
     });
   });
 
-  describe('slice', ()=>{
+  xdescribe('slice', ()=>{
     it('Should return a new array', ()=>{
       // TODO: write and implement the specs for this function
     });
   });
 
-  describe('splice', ()=>{
+  xdescribe('splice', ()=>{
     it('Should return a new array', ()=>{
       // TODO: write and implement the specs for this function
     });
@@ -228,7 +249,7 @@ describe('Underscore library', ()=>{
     });
   });
 
-  describe('reduce', ()=> {
+  xdescribe('reduce', ()=> {
     it('should be able to sum up an array', ()=> {
       var add = function(tally, item) {return tally + item; };
       var total = _.reduce([1, 2, 3], add, 0);
