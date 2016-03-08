@@ -5,22 +5,6 @@ chai.should();
 
 var _ = require('../src/');
 
-console.log(_)
-
-xdescribe('Test 1', function(){
-  it('should add 2 numbers', function(){
-    expect(2+2).equal(2);
-  })
-  it('should add 2 numbers', function(){
-    expect(2+2).equal(2);
-  })
-  it('should add 2 numbers', function(){
-    expect(2+2).equal(2);
-  })
-});
-
-
-
 describe('Underscore library', ()=>{
 
   describe('identity', ()=>{
