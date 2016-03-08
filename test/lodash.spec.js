@@ -1,9 +1,9 @@
-let chai = require('chai');
-let sinon = require('sinon');
-let expect = chai.expect;
+const chai = require('chai');
+const sinon = require('sinon');
+const expect = chai.expect;
 chai.should();
 
-let _ = require('../src/');
+const _ = require('../src/');
 
 describe('Underscore library', ()=>{
 
@@ -18,7 +18,7 @@ describe('Underscore library', ()=>{
 
   describe('first: does not mutate the collection', ()=>{
 
-    let items;
+    const items;
     beforeEach(function(){
       items = [1,9, 10, true, 'Hacklunch', {name: 'Philos'}];
     });
@@ -42,7 +42,7 @@ describe('Underscore library', ()=>{
   });
 
   xdescribe('last',  ()=>{
-    let items;
+    const items;
 
     beforeEach(function(){
       items = [1,9, 10, true, 'Hacklunch', {name: 'Philos'}];
@@ -67,7 +67,7 @@ describe('Underscore library', ()=>{
   });
 
   xdescribe('isArray',  ()=>{
-    let items = [10, false, 'Hacklunch'];
+    const items = [10, false, 'Hacklunch'];
 
     it('Should return true when passed an collection of elements', ()=>{
       expect(_.isArray(items)).equal(true);
@@ -101,7 +101,7 @@ describe('Underscore library', ()=>{
     });
 
     it('Should return false when passed a string', ()=>{
-      let items;
+      const items;
       expect(_.isDefined(items)).equal(false);
     });
   });
@@ -113,7 +113,7 @@ describe('Underscore library', ()=>{
     });
 
     it('Should return true when passed a named function', ()=>{
-      let sum = (x, y)=> x + y;
+      const sum = (x, y)=> x + y;
       expect(_.isFunction(sum)).equal(true);
     });
 
@@ -162,8 +162,8 @@ describe('Underscore library', ()=>{
 
   describe('forEach', ()=>{
     it('should iterate over arrays, providing access to the element, index, and array itself', ()=> {
-      let animals = ['ant', 'bat', 'cat'];
-      let iterationInputs = [];
+      const animals = ['ant', 'bat', 'cat'];
+      const iterationInputs = [];
 
       _.forEach(animals, function(animal, index, list) {
         iterationInputs.push([animal, index, list]);
@@ -177,8 +177,8 @@ describe('Underscore library', ()=>{
     });
 
     it('should only iterate over the array elements, not properties of the array', ()=> {
-      let animals = ['ant', 'bat', 'cat'];
-      let iterationInputs = [];
+      const animals = ['ant', 'bat', 'cat'];
+      const iterationInputs = [];
 
       animals.shouldBeIgnored = 'Ignore me!';
 
@@ -194,8 +194,8 @@ describe('Underscore library', ()=>{
     });
 
     it('should iterate over objects, providing access to the element, index, and object itself', ()=> {
-      let animals = { a: 'ant', b: 'bat', c: 'cat' };
-      let iterationInputs = [];
+      const animals = { a: 'ant', b: 'bat', c: 'cat' };
+      const iterationInputs = [];
 
       _.forEach(animals, function(animal, key, object) {
         iterationInputs.push([animal, key, object]);
@@ -211,7 +211,7 @@ describe('Underscore library', ()=>{
 
   describe('map', ()=>{
     it('should apply a function to every value in an array', ()=>{
-      let squaredValues = _.map([4, 2, 3, 9], (item) => item*item);
+      const squaredValues = _.map([4, 2, 3, 9], (item) => item*item);
       expect(squaredValues).to.deep.equal([16, 4, 9, 81]);
     });
   });
@@ -223,22 +223,22 @@ describe('Underscore library', ()=>{
     });
 
     it('should return undefined if none of the elements match the predicate', ()=>{
-      let isEven = (num) => { num % 2 === 0; };
-      let evens = _.find([1, 3, 7, 5], isEven);
+      const isEven = (num) => { num % 2 === 0; };
+      const evens = _.find([1, 3, 7, 5], isEven);
       expect(evens).equal('undefined');
     });
 
     it('should return the first element that matchs the predicate', ()=>{
-      let isOdd = function(num){ num % 2 !== 0; };
-      let odds = _.find([10, 2, 3, 4, 5, 6], isOdd);
+      const isOdd = function(num){ num % 2 !== 0; };
+      const odds = _.find([10, 2, 3, 4, 5, 6], isOdd);
       expect(odds).equal(3);
     });
   });
 
   xdescribe('reduce', ()=> {
     it('should be able to sum up an array', ()=> {
-      let add = function(tally, item) {return tally + item; };
-      let total = _.reduce([1, 2, 3], add, 0);
+      const add = function(tally, item) {return tally + item; };
+      const total = _.reduce([1, 2, 3], add, 0);
 
       expect(total).to.equal(6);
     });
@@ -261,51 +261,51 @@ describe('Underscore library', ()=>{
 
   describe('extend', ()=> {
     it('returns the first argument', ()=> {
-      let to = {};
-      let from = {};
-      let extended = _.extend(to, from);
+      const to = {};
+      const from = {};
+      const extended = _.extend(to, from);
 
       expect(extended).to.equal(to);
     });
 
     it('should extend an object with the attributes of another', ()=> {
-      let to = {};
-      let from = {a:'b'};
-      let extended = _.extend(to, from);
+      const to = {};
+      const from = {a:'b'};
+      const extended = _.extend(to, from);
 
       expect(extended.a).to.equal('b');
     });
 
     it('should override properties found on the destination', ()=> {
-      let to = {a:'x'};
-      let from = {a:'b'};
-      let extended = _.extend(to, from);
+      const to = {a:'x'};
+      const from = {a:'b'};
+      const extended = _.extend(to, from);
 
       expect(extended.a).to.equal('b');
     });
 
     it('should not override properties not found in the source', ()=> {
-      let to = {x:'x'};
-      let from = {a:'b'};
-      let extended = _.extend(to, from);
+      const to = {x:'x'};
+      const from = {a:'b'};
+      const extended = _.extend(to, from);
 
       expect(extended.x).to.equal('x');
     });
 
     it('should extend from multiple source objects', ()=> {
-      let extended = _.extend({x:1}, {a:2}, {b:3});
+      const extended = _.extend({x:1}, {a:2}, {b:3});
 
       expect(extended).to.eql({x:1, a:2, b:3});
     });
 
     it('in the case of a conflict, it should use the last property\'s values when extending from multiple source objects', ()=> {
-      let extended = _.extend({x:'x'}, {a:'a', x:2}, {a:1});
+      const extended = _.extend({x:'x'}, {a:'a', x:2}, {a:1});
 
       expect(extended).to.eql({x:2, a:1});
     });
 
     it('should copy undefined values', ()=> {
-      let extended = _.extend({}, {a: void 0, b: null});
+      const extended = _.extend({}, {a: void 0, b: null});
 
       expect('a' in extended && 'b' in extended).to.be(true);
     });
