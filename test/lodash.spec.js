@@ -1,9 +1,9 @@
-var chai = require('chai');
-var sinon = require('sinon');
-var expect = chai.expect;
+let chai = require('chai');
+let sinon = require('sinon');
+let expect = chai.expect;
 chai.should();
 
-var _ = require('../src/');
+let _ = require('../src/');
 
 describe('Underscore library', ()=>{
 
@@ -162,8 +162,8 @@ describe('Underscore library', ()=>{
 
   describe('forEach', ()=>{
     it('should iterate over arrays, providing access to the element, index, and array itself', ()=> {
-      var animals = ['ant', 'bat', 'cat'];
-      var iterationInputs = [];
+      let animals = ['ant', 'bat', 'cat'];
+      let iterationInputs = [];
 
       _.forEach(animals, function(animal, index, list) {
         iterationInputs.push([animal, index, list]);
@@ -177,8 +177,8 @@ describe('Underscore library', ()=>{
     });
 
     it('should only iterate over the array elements, not properties of the array', ()=> {
-      var animals = ['ant', 'bat', 'cat'];
-      var iterationInputs = [];
+      let animals = ['ant', 'bat', 'cat'];
+      let iterationInputs = [];
 
       animals.shouldBeIgnored = 'Ignore me!';
 
@@ -194,8 +194,8 @@ describe('Underscore library', ()=>{
     });
 
     it('should iterate over objects, providing access to the element, index, and object itself', ()=> {
-      var animals = { a: 'ant', b: 'bat', c: 'cat' };
-      var iterationInputs = [];
+      let animals = { a: 'ant', b: 'bat', c: 'cat' };
+      let iterationInputs = [];
 
       _.forEach(animals, function(animal, key, object) {
         iterationInputs.push([animal, key, object]);
@@ -237,8 +237,8 @@ describe('Underscore library', ()=>{
 
   xdescribe('reduce', ()=> {
     it('should be able to sum up an array', ()=> {
-      var add = function(tally, item) {return tally + item; };
-      var total = _.reduce([1, 2, 3], add, 0);
+      let add = function(tally, item) {return tally + item; };
+      let total = _.reduce([1, 2, 3], add, 0);
 
       expect(total).to.equal(6);
     });
@@ -261,51 +261,51 @@ describe('Underscore library', ()=>{
 
   describe('extend', ()=> {
     it('returns the first argument', ()=> {
-      var to = {};
-      var from = {};
-      var extended = _.extend(to, from);
+      let to = {};
+      let from = {};
+      let extended = _.extend(to, from);
 
       expect(extended).to.equal(to);
     });
 
     it('should extend an object with the attributes of another', ()=> {
-      var to = {};
-      var from = {a:'b'};
-      var extended = _.extend(to, from);
+      let to = {};
+      let from = {a:'b'};
+      let extended = _.extend(to, from);
 
       expect(extended.a).to.equal('b');
     });
 
     it('should override properties found on the destination', ()=> {
-      var to = {a:'x'};
-      var from = {a:'b'};
-      var extended = _.extend(to, from);
+      let to = {a:'x'};
+      let from = {a:'b'};
+      let extended = _.extend(to, from);
 
       expect(extended.a).to.equal('b');
     });
 
     it('should not override properties not found in the source', ()=> {
-      var to = {x:'x'};
-      var from = {a:'b'};
-      var extended = _.extend(to, from);
+      let to = {x:'x'};
+      let from = {a:'b'};
+      let extended = _.extend(to, from);
 
       expect(extended.x).to.equal('x');
     });
 
     it('should extend from multiple source objects', ()=> {
-      var extended = _.extend({x:1}, {a:2}, {b:3});
+      let extended = _.extend({x:1}, {a:2}, {b:3});
 
       expect(extended).to.eql({x:1, a:2, b:3});
     });
 
     it('in the case of a conflict, it should use the last property\'s values when extending from multiple source objects', ()=> {
-      var extended = _.extend({x:'x'}, {a:'a', x:2}, {a:1});
+      let extended = _.extend({x:'x'}, {a:'a', x:2}, {a:1});
 
       expect(extended).to.eql({x:2, a:1});
     });
 
     it('should copy undefined values', ()=> {
-      var extended = _.extend({}, {a: void 0, b: null});
+      let extended = _.extend({}, {a: void 0, b: null});
 
       expect('a' in extended && 'b' in extended).to.be(true);
     });
