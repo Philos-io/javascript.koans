@@ -18,7 +18,7 @@ describe('Underscore library', ()=>{
 
   describe('first: does not mutate the collection', ()=>{
 
-    const items;
+    let items;
     beforeEach(function(){
       items = [1,9, 10, true, 'Hacklunch', {name: 'Philos'}];
     });
@@ -42,7 +42,7 @@ describe('Underscore library', ()=>{
   });
 
   xdescribe('last',  ()=>{
-    const items;
+    let items;
 
     beforeEach(function(){
       items = [1,9, 10, true, 'Hacklunch', {name: 'Philos'}];
@@ -101,7 +101,7 @@ describe('Underscore library', ()=>{
     });
 
     it('Should return false when passed a string', ()=>{
-      const items;
+      let items;
       expect(_.isDefined(items)).equal(false);
     });
   });
@@ -145,18 +145,6 @@ describe('Underscore library', ()=>{
       expect(_.isNumber(NaN)).equal(false);
       expect(_.isNumber({})).equal(false);
       expect(_.isNumber({})).equal(false);
-    });
-  });
-
-  xdescribe('slice', ()=>{
-    it('Should return a new array', ()=>{
-      // TODO: write and implement the specs for this function
-    });
-  });
-
-  xdescribe('splice', ()=>{
-    it('Should return a new array', ()=>{
-      // TODO: write and implement the specs for this function
     });
   });
 
@@ -213,6 +201,18 @@ describe('Underscore library', ()=>{
     it('should apply a function to every value in an array', ()=>{
       const squaredValues = _.map([4, 2, 3, 9], (item) => item*item);
       expect(squaredValues).to.deep.equal([16, 4, 9, 81]);
+    });
+  });
+
+  xdescribe('slice', ()=>{
+    it('Should return a new array', ()=>{
+      // TODO: write and implement the specs for this function
+    });
+  });
+
+  xdescribe('splice', ()=>{
+    it('Should return a new array', ()=>{
+      // TODO: write and implement the specs for this function
     });
   });
 
